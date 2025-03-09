@@ -3,23 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Python Server</title>
+    <title>KeepFresh</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to CSS -->
 </head>
 <body>
-    <h1>Welcome to My Web Server</h1>
+
+    <header>
+        <h1>Welcome to KeepFresh</h1>
+        <p><strong>Manage your groceries</strong>, track expiry dates, and <em>find recipes!</em></p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="products.html">🛒 View Products</a></li>
+            <li><a href="profile.html">👤 My Profile</a></li>
+            <li><a href="recipes.html">🥗 Recipes</a></li>
+            <li><a href="notifications.html">🔔 Notifications</a></li>
+        </ul>
+    </nav>
+
+    <section class="media-container">
+        <div class="media-left">
+            <a href="about.html" class="about-link">Learn more about me</a>
+            <audio controls>
+                <source src="audio.mp3" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+        </div>
     
-    <form method="POST">
-        <label for="search">Search:</label>
-        <input type="text" id="search" name="search">
-        <button type="submit">Search</button>
-    </form>
+        <video class="media-video" controls>
+            <source src="video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </section>       
 
-    {% if query %}
-        <p>You searched for: <strong>{{ query }}</strong></p>
-    {% endif %}
+    <section>
+        <h2>Why Use KeepFresh?</h2>
+        <ul>
+            <li><b>🛍️ Organized Shopping:</b> Keep track of your groceries.</li>
+            <li><b>📅 Expiry Reminders:</b> Get notified before food goes bad.</li>
+            <li><b>🍽️ Smart Recipes:</b> Find recipes based on what you have.</li>
+        </ul>
+    </section>
 
-    {% if message %}
-        <p style="color: red;"><strong>{{ message }}</strong></p>
-    {% endif %}
-</body>
-</html>
+    <section>
+        <h2>Grocery List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Category</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Apples</td>
+                    <td>5</td>
+                    <td>Fruits</td>
+                </tr>
+                <tr>
+                    <td>Milk</td>
+                    <td>1 Liter</td>
+                    <td>Dairy</td>
+                </tr>
+                <tr>
+                    <td>Rice</td>
+                    <td>2 kg</td>
+                    <td>Grains</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <section>
+            <h2>Add a New Grocery Item</h2>
+            <form>
+                <fieldset>
+                    <legend>Enter Grocery Details</legend>
+        
+                    <div class="form-group">
+                        <label for="item-name">Item Name:</label>
+                        <input type="text" id="item-name" name="item-name" required>
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="quantity">Quantity:</label>
+                        <input type="number" id="quantity" name="quantity" required>
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="category">Category:</label>
+                        <select id="category" name="category">
+                            <option value="Fruits">Fruits</option>
+                            <option value="Vegetables">Vegetables</option>
+                            <option value="Dairy">Dairy</option>
+                            <option value="Grains">Grains</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+        
+                    <button type="submit">Add Item</button>
+                </fieldset>
+            </form>
+        </section>
+        
