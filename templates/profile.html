@@ -3,13 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Profile</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> 
 </head>
 <body>
-    <h1>My Profile</h1>
-    <p>👤 Name: John Smith</p>
-    <p>📧 Email: john@example.com</p>
-    <a href="index.html">🔙 Back to Home</a>
+
+    <header>
+        <h1>My Profile</h1>
+        <p>Manage your personal details and preferences.</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}">🏠 Home</a></li>
+            <li><a href="{{ url_for('products') }}">🛒 Products</a></li>
+            <li><a href="{{ url_for('recipes') }}">🥗 Recipes</a></li>
+            <li><a href="{{ url_for('notifications') }}">🔔 Notifications</a></li>
+            <li><a href="{{ url_for('about') }}">ℹ️ About</a></li>
+        </ul>
+    </nav>
+
 </body>
 </html>

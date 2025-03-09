@@ -3,15 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expiry Alerts</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Notifications</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> 
 </head>
 <body>
-    <h1>Expiring Soon</h1>
-    
-    <p>⏳ 🥛 Milk - **2 Days Left**</p>
-    <p>⏳ 🍞 Bread - **5 Days Left**</p>
 
-    <a href="index.html">🔙 Back to Home</a>
+    <header>
+        <h1>Notifications</h1>
+        <p>Stay updated with food expiry alerts and shopping reminders.</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}">🏠 Home</a></li>
+            <li><a href="{{ url_for('products') }}">🛒 Products</a></li>
+            <li><a href="{{ url_for('profile') }}">👤 Profile</a></li>
+            <li><a href="{{ url_for('recipes') }}">🥗 Recipes</a></li>
+            <li><a href="{{ url_for('about') }}">ℹ️ About</a></li>
+        </ul>
+    </nav>
+
 </body>
 </html>

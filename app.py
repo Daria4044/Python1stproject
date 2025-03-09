@@ -1,21 +1,30 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, url_for
 
 app = Flask(__name__)
 
-# Home route with search form
-@app.route("/", methods=["GET", "POST"])
+@app.route("/")
 def home():
-    query = request.args.get("q", "").strip()  # Get search term from URL query string
+    return render_template("index.html")
 
-    if request.method == "POST":
-        query = request.form.get("search", "").strip()  # Get search term from form submission
+@app.route("/products")
+def products():
+    return render_template("products.html")
 
-    # If query is empty, show error message
-    if not query:
-        return render_template("index.html", message="Please enter a search term", query=query)
+@app.route("/profile")
+def profile():
+    return render_template("profile.html")
 
-    return render_template("index.html", query=query)
+@app.route("/recipes")
+def recipes():
+    return render_template("recipes.html")
 
-# Start the Flask server
+@app.route("/notifications")
+def notifications():
+    return render_template("notifications.html")
+
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
 if __name__ == "__main__":
     app.run(debug=True)

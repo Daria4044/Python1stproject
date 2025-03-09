@@ -3,23 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Grocery Tracker</title>
+    <title>About KeepFresh</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> 
 </head>
 <body>
-    <img src="about-image.jpg" alt="A description of the image">
 
-    <h1>About This Project</h1>
+    <header>
+        <h1>About KeepFresh</h1>
+        <p>KeepFresh helps you manage your groceries, track expiry dates, and find recipes based on available ingredients.</p>
+    </header>
 
-    <p><em>KeepFresh</em> helps you manage your groceries efficiently.</p>
-
-    <h2>Features:</h2>
-    <ol>
-        <li><strong>Product List:</strong> Track what you buy.</li>
-        <li><strong>Expiry Alerts:</strong> Get notifications before food spoils.</li>
-        <li><strong>Recipe Suggestions:</strong> Cook with available ingredients.</li>
-    </ol>
-
-    <a href="index.html">🔙 Go back to Home</a>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}">🏠 Home</a></li>
+            <li><a href="{{ url_for('products') }}">🛒 Products</a></li>
+            <li><a href="{{ url_for('profile') }}">👤 Profile</a></li>
+            <li><a href="{{ url_for('recipes') }}">🥗 Recipes</a></li>
+            <li><a href="{{ url_for('notifications') }}">🔔 Notifications</a></li>
+        </ul>
+    </nav>
 
 </body>
 </html>
+ 
