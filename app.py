@@ -1,10 +1,25 @@
-from flask import Flask, request, render_template, url_for
+from flask import Flask, request, render_template
 
 app = Flask(__name__)
 
-@app.route("/")
+# Temporary storage for grocery items
+grocery_list = [
+    {"item": "Apples", "quantity": "5", "category": "Fruits"},
+    {"item": "Milk", "quantity": "1 Liter", "category": "Dairy"},
+    {"item": "Rice", "quantity": "2 kg", "category": "Grains"},
+]
+
+@app.route("/", methods=["GET", "POST"])
 def home():
-    return render_template("index.html")
+    if request.method == "POST":
+        item_name = request.form.get("item-name")
+        quantity = request.form.get("quantity")
+        category = request.form.get("category")
+        
+        if item_name and quantity and category:
+            grocery_list.append({"item": item_name, "quantity": quantity, "category": category})
+
+    return render_template("index.html", grocery_list=grocery_list)
 
 @app.route("/products")
 def products():
