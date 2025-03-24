@@ -2,19 +2,19 @@ from flask import Flask, request, render_template, redirect, url_for
 
 app = Flask(__name__)
 
-# Temporary grocery list data
+# Temporary grocery list storage
 grocery_list = [
     {"item": "Apples", "quantity": "5", "category": "Fruits"},
     {"item": "Milk", "quantity": "1 Liter", "category": "Dairy"},
     {"item": "Rice", "quantity": "2 kg", "category": "Grains"},
 ]
 
-# Home route (GET only)
+# ✅ Clean GET route for homepage
 @app.route("/", methods=["GET"])
 def home():
     return render_template("index.html", grocery_list=grocery_list)
 
-# Separate POST route to handle form submission
+# ✅ Separate POST route for form submission
 @app.route("/add-item", methods=["POST"])
 def add_item():
     item_name = request.form.get("item-name")
@@ -24,9 +24,9 @@ def add_item():
     if item_name and quantity and category:
         grocery_list.append({"item": item_name, "quantity": quantity, "category": category})
 
-    return redirect(url_for('home'))
+    return redirect(url_for("home"))
 
-# Other routes
+# Other regular page routes
 @app.route("/products")
 def products():
     return render_template("products.html")
@@ -47,16 +47,16 @@ def notifications():
 def about():
     return render_template("about.html")
 
-# ✅ Dynamic route
+# ✅ Dynamic route example
 @app.route("/user/<username>")
 def user_profile(username):
     return render_template("user.html", username=username)
 
-# ✅ Test route
+# Optional test route (you can remove later)
 @app.route("/test")
 def test():
     return "Test is working!"
 
-# Run the app
+# Start the server
 if __name__ == "__main__":
     app.run(debug=True)
