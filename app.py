@@ -53,10 +53,6 @@ def user_profile(username):
     return render_template("user.html", username=username)
 
 # Optional test route (you can remove later)
-@app.route("/test")
-def test():
-    return "Test is working!"
-
 # Start the server
 if __name__ == "__main__":
     app.run(debug=True)
