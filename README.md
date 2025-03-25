@@ -1,16 +1,18 @@
-# 🥦 KeepFresh - Grocery Management Web App
+# 🥦 KeepFresh – Grocery Management Web App
 
-**KeepFresh** is a web application that helps users manage groceries, track expiry dates, and find recipes based on available ingredients.
+**KeepFresh** is a dynamic web application that helps users manage groceries, track expiry dates, and find recipes based on available ingredients.
 
 ---
 
 ## 🚀 Features
 
-- 🛒 **Organized Shopping:** Keep track of groceries
-- 📅 **Expiry Reminders:** Get notified before food goes bad
-- 🍽️ **Smart Recipes:** Find recipes based on available ingredients
-- 📂 **Multiple Pages:** Profile, Notifications, Products, Recipes, and About pages
-
+- 🛒 **Organized Shopping:** Keep track of your grocery items in one place.
+- 📅 **Expiry Reminders:** Get notified before your food goes bad.
+- 🍽️ **Smart Recipes:** Discover recipes based on what's in your fridge.
+- 📂 **Multiple Pages:** Includes Profile, Notifications, Products, Recipes, and About pages.
+- 🧾 **Form Handling:** Add grocery items dynamically using forms.
+- 🔁 **Dynamic Routing:** Includes routes like `/user/<username>` for dynamic pages.
+- 🖥️ **Client-Side JavaScript:** Adds interactive behavior to the app (like a welcome message).
 ---
 
 ## 🏗️ Project Structure
