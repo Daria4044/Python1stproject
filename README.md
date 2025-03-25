@@ -34,3 +34,5 @@ my-web-server/
 │── server.py                 # Server configuration
 │── get-pip.py               # Python package installer
 │── README.md                # This documentation
+
+✅ This project uses dynamic routing and form handling with Flask.

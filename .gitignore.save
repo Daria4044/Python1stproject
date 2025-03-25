@@ -3,9 +3,3 @@ __pycache__/
 .env
 get-pip.py
 *.DS_Store
-
-
-git add .
-git status
-
-

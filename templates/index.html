@@ -44,10 +44,16 @@
       <li><b>📅 Expiry Reminders:</b> Get notified before food goes bad.</li>
       <li><b>🍽️ Smart Recipes:</b> Find recipes based on what you have.</li>
     </ul>
-  </section>
-
+    
+    <!-- ✅ Add this part -->
+    <section>
+      <h2>JavaScript Interaction</h2>
+      <button id="welcome-btn">Click Me!</button>
+      <p id="welcome-msg"></p>
+    </section>    
+  
   <section>
-    <h2>Grocery List</h2>
+    <h2>Grocery List (<span id="item-count">0</span> items)</h2>
     <table>
       <thead>
         <tr>
@@ -99,6 +105,9 @@
       </fieldset>
     </form>
   </section>
+
+  <!-- ✅ JavaScript loaded from static folder -->
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
 
 </body>
 </html>
