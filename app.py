@@ -1,20 +1,27 @@
 from flask import Flask, request, render_template, redirect, url_for
+from flask_sqlalchemy import SQLAlchemy
+from my_web_server.models import db, GroceryItem
 
 app = Flask(__name__)
 
-# Temporary grocery list storage
-grocery_list = [
-    {"item": "Apples", "quantity": "5", "category": "Fruits"},
-    {"item": "Milk", "quantity": "1 Liter", "category": "Dairy"},
-    {"item": "Rice", "quantity": "2 kg", "category": "Grains"},
-]
+# 🔧 Database Configuration
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///keepfresh.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-# ✅ Clean GET route for homepage
+# 🔌 Initialize DB
+db.init_app(app)
+
+# 🔨 Create DB tables
+with app.app_context():
+    db.create_all()
+
+# ✅ GET route to show all grocery items
 @app.route("/", methods=["GET"])
 def home():
+    grocery_list = GroceryItem.query.all()
     return render_template("index.html", grocery_list=grocery_list)
 
-# ✅ Separate POST route for form submission
+# ✅ POST route to add new item
 @app.route("/add-item", methods=["POST"])
 def add_item():
     item_name = request.form.get("item-name")
@@ -22,11 +29,14 @@ def add_item():
     category = request.form.get("category")
 
     if item_name and quantity and category:
-        grocery_list.append({"item": item_name, "quantity": quantity, "category": category})
+        # 🛠️ Match field name in your model: item_name
+        new_item = GroceryItem(item=item_name, quantity=quantity, category=category)
+        db.session.add(new_item)
+        db.session.commit()
 
     return redirect(url_for("home"))
 
-# Other regular page routes
+# ✅ Other routes
 @app.route("/products")
 def products():
     return render_template("products.html")
@@ -47,12 +57,10 @@ def notifications():
 def about():
     return render_template("about.html")
 
-# ✅ Dynamic route example
 @app.route("/user/<username>")
 def user_profile(username):
     return render_template("user.html", username=username)
 
-# Optional test route (you can remove later)
-# Start the server
+# 🚀 Run the app
 if __name__ == "__main__":
     app.run(debug=True)
