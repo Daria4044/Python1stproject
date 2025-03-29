@@ -21,7 +21,7 @@ def home():
     grocery_list = GroceryItem.query.all()
     return render_template("index.html", grocery_list=grocery_list)
 
-# ✅ POST route to add new item
+# ✅ POST route to add new item — this was missing!
 @app.route("/add-item", methods=["POST"])
 def add_item():
     item_name = request.form.get("item-name")
@@ -29,12 +29,24 @@ def add_item():
     category = request.form.get("category")
 
     if item_name and quantity and category:
-        # 🛠️ Match field name in your model: item_name
         new_item = GroceryItem(item=item_name, quantity=quantity, category=category)
         db.session.add(new_item)
         db.session.commit()
 
     return redirect(url_for("home"))
+
+# ✅ Edit item route
+@app.route("/edit/<int:item_id>", methods=["GET", "POST"])
+def edit_item(item_id):
+    item = GroceryItem.query.get_or_404(item_id)
+
+    if request.method == "POST":
+        item.item = request.form.get("item-name")
+        item.quantity = request.form.get("quantity")
+        item.category = request.form.get("category")
+        db.session.commit()
+        return redirect(url_for("home"))
+    return render_template("edit_item.html", item=item)
 
 # ✅ Other routes
 @app.route("/products")

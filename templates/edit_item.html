@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Item</title>
+</head>
+<body>
+    <h1>Edit Grocery Item</h1>
+
+    <form method="POST">
+        <label for="item-name">Item Name:</label>
+        <input type="text" id="item-name" name="item-name" value="{{ item.item }}" required><br><br>
+
+        <label for="quantity">Quantity:</label>
+        <input type="text" id="quantity" name="quantity" value="{{ item.quantity }}" required><br><br>
+
+        <label for="category">Category:</label>
+        <select id="category" name="category">
+            <option value="Fruits" {% if item.category == 'Fruits' %}selected{% endif %}>Fruits</option>
+            <option value="Vegetables" {% if item.category == 'Vegetables' %}selected{% endif %}>Vegetables</option>
+            <option value="Dairy" {% if item.category == 'Dairy' %}selected{% endif %}>Dairy</option>
+            <option value="Grains" {% if item.category == 'Grains' %}selected{% endif %}>Grains</option>
+            <option value="Other" {% if item.category == 'Other' %}selected{% endif %}>Other</option>
+        </select><br><br>
+
+        <button type="submit">Save Changes</button>
+    </form>
+
+    <p><a href="{{ url_for('home') }}">← Back to Grocery List</a></p>
+</body>
+</html>
