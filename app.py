@@ -47,6 +47,12 @@ def edit_item(item_id):
         db.session.commit()
         return redirect(url_for("home"))
     return render_template("edit_item.html", item=item)
+@app.route("/delete/<int:item_id>", methods=["POST"])
+def delete_item(item_id):
+    item = GroceryItem.query.get_or_404(item_id)
+    db.session.delete(item)
+    db.session.commit()
+    return redirect(url_for("home"))
 
 # ✅ Other routes
 @app.route("/products")
