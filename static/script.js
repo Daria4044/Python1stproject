@@ -16,4 +16,8 @@ window.addEventListener('DOMContentLoaded', () => {
       countSpan.textContent = tableRows.length;
     }
   });
-  
+  // Count and update number of grocery items
+document.addEventListener("DOMContentLoaded", function () {
+  const rows = document.querySelectorAll("tbody tr");
+  document.getElementById("item-count").textContent = rows.length;
+});
