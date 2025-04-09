@@ -1,11 +1,16 @@
+import os
+from dotenv import load_dotenv
 from flask import Flask, request, render_template, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from my_web_server.models import db, GroceryItem
 
+# 🔧 Load environment variables
+load_dotenv()
+
 app = Flask(__name__)
 
 # 🔧 Database Configuration
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///keepfresh.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # 🔌 Initialize DB
@@ -21,7 +26,7 @@ def home():
     grocery_list = GroceryItem.query.all()
     return render_template("index.html", grocery_list=grocery_list)
 
-# ✅ POST route to add new item — this was missing!
+# ✅ POST route to add new item
 @app.route("/add-item", methods=["POST"])
 def add_item():
     item_name = request.form.get("item-name")
@@ -47,6 +52,8 @@ def edit_item(item_id):
         db.session.commit()
         return redirect(url_for("home"))
     return render_template("edit_item.html", item=item)
+
+# ✅ Delete item route
 @app.route("/delete/<int:item_id>", methods=["POST"])
 def delete_item(item_id):
     item = GroceryItem.query.get_or_404(item_id)
@@ -54,7 +61,7 @@ def delete_item(item_id):
     db.session.commit()
     return redirect(url_for("home"))
 
-# ✅ Other routes
+# ✅ Other static page routes
 @app.route("/products")
 def products():
     return render_template("products.html")
@@ -79,6 +86,15 @@ def about():
 def user_profile(username):
     return render_template("user.html", username=username)
 
-# 🚀 Run the app
+# ✅ Custom 404 Error Page
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html"), 404
+
+# 🚀 Run the app (development mode)
 if __name__ == "__main__":
     app.run(debug=True)
+    
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html"), 404
