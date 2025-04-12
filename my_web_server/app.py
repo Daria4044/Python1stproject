@@ -11,7 +11,7 @@ load_dotenv()
 app = Flask(__name__)
 
 # 🔧 Database Configuration
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("SQLALCHEMY_DATABASE_URI")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # 🔌 Initialize DB
@@ -96,6 +96,3 @@ def page_not_found(e):
 if __name__ == "__main__":
     app.run(debug=True)
     
-@app.errorhandler(404)
-def page_not_found(e):
-    return render_template("404.html"), 404
