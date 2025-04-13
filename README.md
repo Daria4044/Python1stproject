@@ -1,29 +1,37 @@
 # 🥦 KeepFresh – Grocery Management Web App
 
-**KeepFresh** is a full-stack web app built with Flask. It helps users manage grocery items, track expiry dates, and get recipe ideas based on what's in the fridge. It also includes client-side JavaScript and server-side routing, plus a working database with CRUD features.
+**KeepFresh** is a full-stack web application built with **Python and Flask**. It helps users manage their grocery items, track expiry dates, and get recipe ideas based on what's already in the fridge. The app supports full **CRUD functionality**, uses a real **PostgreSQL database**, and includes both **client-side** and **server-side** features.
 
 ---
 
-## 🚀 Features
+## 🌟 Key Features
 
-- 🛒 **Organized Shopping** – Add, view, edit, and delete grocery items.
-- 📅 **Expiry Reminders** – Stay notified before food items go bad.
-- 🍽️ **Smart Recipes** – Explore recipes based on your groceries.
-- 🧾 **Form Handling** – Add new items using HTML forms.
-- 🔁 **Dynamic Routing** – User profile pages via `/user/<username>`.
-- 💻 **Client-Side Interaction** – JavaScript interaction and media elements.
-- 🖼️ **Static Media** – Custom CSS, images, audio, and video integration.
-- 🧠 **Custom 404 Page** – Better UX for invalid routes.
+- 🛒 **Add, view, edit, and delete grocery items** in your inventory
+- 📅 **Track expiry dates** and get reminded before food goes bad
+- 🍽️ **See recipes** based on your available groceries
+- 🧾 **Forms for data entry** with input validation
+- 👤 **User profile pages** at `/user/<username>`
+- 🔁 **Dynamic routing** using Flask
+- 🎨 **Custom styles, audio, and video**
+- 📄 **404 error page** for invalid URLs
+
+---
+
+## 💻 Live Demo
+
+🌐 [Live app on Render](https://keepfresh-lm77.onrender.com)  
+⏳ *Note: May take a few seconds to load on free hosting.*
 
 ---
 
 ## 🔒 Security & Best Practices
 
-- ✅ Input validation for all form fields.
-- ✅ Secure data models using SQLAlchemy.
-- ✅ `.env` file for keeping sensitive config private.
-- ✅ `.gitignore` set up to exclude secrets and compiled files.
-- ✅ Custom error page (`404.html`) to handle unknown routes securely.
+- ✅ Environment variables are used via `.env` (e.g. `DATABASE_URL`)
+- ✅ `.gitignore` hides secrets and compiled files
+- ✅ SQLAlchemy models protect the database layer
+- ✅ Forms include **basic validation** to prevent invalid input
+- ✅ Custom 404 page for unknown routes
+- ✅ Uses **gunicorn** for production server
 
 ---
 
@@ -31,51 +39,34 @@
 
 ```plaintext
 my-web-server/
-├── static/                  # Static files (CSS, JS, media)
-│   ├── styles.css           # Main styles
-│   ├── script.js            # JavaScript interactivity
-│   ├── video.mp4            # Embedded video
-│   ├── audio.mp3            # Background audio
-│   └── images/
-│       └── about-image.jpg  # Image used on the About page
-├── templates/               # HTML templates rendered by Flask
-│   ├── index.html
-│   ├── products.html
-│   ├── profile.html
-│   ├── recipes.html
-│   ├── notifications.html
-│   ├── about.html
-│   ├── user.html
-│   └── 404.html             # Custom error page
-├── my_web_server/           # Backend logic
-│   ├── app.py               # Main Flask app
+├── app/                     # Main backend application
+│   ├── __init__.py          # Package initializer
+│   ├── main.py              # Flask app (routes, config)
 │   ├── models.py            # SQLAlchemy DB models
-│   └── __init__.py          # Package initializer
+│   ├── templates/           # HTML templates (Jinja2)
+│   │   ├── index.html
+│   │   ├── edit_item.html
+│   │   ├── products.html
+│   │   ├── recipes.html
+│   │   ├── profile.html
+│   │   ├── about.html
+│   │   ├── notifications.html
+│   │   ├── user.html
+│   │   └── 404.html
+│   └── static/              # CSS, JS, audio, video, images
+│       ├── styles.css
+│       ├── script.js
+│       ├── audio.mp3
+│       ├── video.mp4
+│       └── images/
 ├── instance/
-│   └── keepfresh.db         # SQLite database
-├── .env                     # Environment variables (not tracked by Git)
-├── .gitignore               # Ignore rules for version control
-├── requirements.txt         # Python package dependencies
-└── README.md                # Project documentation
-
----
-
-## ✅ Technologies Used
-
-- Python + Flask
-- HTML / CSS
-- JavaScript (client-side logic)
-- SQLite + SQLAlchemy (ORM)
-- Jinja2 templating
-- Git & GitHub for version control
-
----
-
-## 💡 Notes
-
-- This app was created as part of the SE_19 module.
-- It follows the best practices in structure, routing, and deployment.
-- Tasks completed include form handling, dynamic pages, client-side scripts, and full CRUD with a database.
-
----
-
+│   └── keepfresh.db         # SQLite DB for local dev
+├── tests/
+│   └── test_routes.py       # Pytest unit tests
+├── .env                     # Environment variables (hidden)
+├── .gitignore               # Files to exclude from Git
+├── requirements.txt         # Python dependencies
+├── render.yaml              # Render deploy config
+├── SECURITY.md              # Security summary
+├── pytest.ini               # Pytest config
+└── README.md                # You're here!

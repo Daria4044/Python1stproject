@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 load_dotenv()
 from flask import Flask, request, render_template, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
-from models import db, GroceryItem
+from app.models import db, GroceryItem
 
 # 🔧 Load environment variables
 load_dotenv()
