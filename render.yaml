@@ -3,7 +3,7 @@ services:
     name: keepfresh-app
     env: python
     buildCommand: "pip install -r requirements.txt"
-    startCommand: gunicorn my_web_server.app:app
+    startCommand: gunicorn app.main:app
     envVars:
       - key: SQLALCHEMY_DATABASE_URI
         fromEnvVar: SQLALCHEMY_DATABASE_URI

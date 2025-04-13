@@ -3,12 +3,15 @@ from dotenv import load_dotenv
 load_dotenv()
 from flask import Flask, request, render_template, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
-from my_web_server.models import db, GroceryItem
+from models import db, GroceryItem
 
 # 🔧 Load environment variables
 load_dotenv()
 
 app = Flask(__name__)
+@app.route("/health")
+def health():
+    return "ok", 200
 
 # 🔧 Database Configuration
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("SQLALCHEMY_DATABASE_URI")
