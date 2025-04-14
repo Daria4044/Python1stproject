@@ -5,4 +5,5 @@ services:
     buildCommand: "pip install -r requirements.txt"
     startCommand: gunicorn app.main:app
     envVars:
-      - key: SQLALCHE
+      - key: SQLALCHEMY_DATABASE_URI
+        fromEnvVar: SQLALCHEMY_DATABASE_URI
